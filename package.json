@@ -1,0 +1,16 @@
+{
+  "name": "hsforms-onm-guten-block",
+  "description": "hotelsuite FORM (hs FORMS) will show a form to book hotel rooms with some customized configurations. This plugin allows the creation of deep links and booking buttons in connection with the Internet booking engine "hotelsuite IBE" (https://www.hotelsuite.de). Sell rooms, vouchers, events, tables and much more! - Get in touch with us: Open New Media GmbH | Digital communication agency | Tel .: +49 261 30380-80 | E-Mail: info@onm.de | Web: https://www.onm.de | Hotel solutions: https://www.hotelsuite.de",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "cgb-scripts start",
+    "build": "cgb-scripts build",
+    "eject": "cgb-scripts eject"
+  },
+  "dependencies": {
+    "@wordpress/compose": "^3.18.0",
+    "cgb-scripts": "1.23.0",
+    "react-select": "^3.1.0"
+  }
+}

@@ -1,0 +1,52 @@
+<f:layout name="Default"/>
+
+
+<f:section name="Content">
+	<div class="tx-hsform">
+		<f:if condition="{isButton}">
+			<f:then>
+				<f:render section="button" arguments="{_all}"/>
+			</f:then>
+			<f:else>
+				<f:render section="form" arguments="{_all}"/>
+			</f:else>
+		</f:if>
+	</div>
+</f:section>
+
+<f:section name="button">
+
+    <a href="javascript:void(0);" class="btn btn-primary" data-micromodal-trigger="booker{blockId}">
+        <i class="icon icon-calendar"></i>
+        {btnLabel}
+    </a>
+
+    <div class="micromodal" id="booker{blockId}" aria-hidden="true">
+        <div class="micromodal__overlay" tabindex="-1" data-micromodal-close>
+            <div class="micromodal__container" role="dialog" aria-modal="true" aria-labelledby="modalContainer{blockId}-title">
+            <header class="micromodal__header">
+                <div class="micromodal__title" id="modalContainer{blockId}-title">
+					{modalTitle}
+				</div>
+				<button class="micromodal__close" aria-label="Close modal" data-micromodal-close></button>
+            </header>
+            <main class="micromodal__content" id="modalContainer{blockId}-content">
+				<f:alias map="{modifierClass: ' hsforms--vertical'}">
+					<f:render partial="BookingForm" section="Main" arguments="{_all}" />
+				</f:alias>
+            </main>
+            </div>
+        </div>
+	</div>
+	<script>
+		jQuery(document).ready(function($) {
+			MicroModal.init();
+		});
+	</script>
+</f:section>
+
+<f:section name="form">
+    <div class="tx-hsforms-form">
+        <f:render partial="BookingForm" section="Main" arguments="{_all}" />
+    </div>
+</f:section>

@@ -1,0 +1,434 @@
+# Copyright (C) 2020 Open New Media GmbH.
+# This file is distributed under the same license as the Hsforms plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Hsforms 0.0.3\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wordpress-"
+"hsforms\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2020-12-03T15:44:11+00:00\n"
+"PO-Revision-Date: 2020-12-03 17:00+0100\n"
+"X-Generator: Poedit 2.4.2\n"
+"X-Domain: wordpress-hsforms\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: da_DK\n"
+
+#. Plugin Name of the plugin
+#: src/block/block.js:62
+msgid "Hsforms"
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "https://www.onm.de"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"hsforms — is a room booker form which is configureable from the backend."
+msgstr ""
+
+#. Author of the plugin
+msgid "Open New Media GmbH."
+msgstr ""
+
+#: src/HsformsOptions.php:27 src/HsformsOptions.php:28
+msgid "General Settings"
+msgstr "Generelle indstillinger"
+
+#: src/HsformsOptions.php:34 src/HsformsOptions.php:35 src/block/block.js:522
+msgid "TravelPeriods"
+msgstr ""
+
+#: src/HsformsOptions.php:41 src/HsformsOptions.php:42 src/block/block.js:642
+msgid "RateCodes"
+msgstr ""
+
+#: src/HsformsOptions.php:48 src/HsformsOptions.php:49 src/block/block.js:665
+msgid "Segments"
+msgstr ""
+
+#: src/HsformsOptions.php:59
+msgid "Hsforms Options"
+msgstr ""
+
+#: src/HsformsOptions.php:435
+msgid "remove minLOS Buffer"
+msgstr ""
+
+#: src/HsformsOptions.php:442
+msgid "Keep Parameters"
+msgstr ""
+
+#: src/HsformsOptions.php:449
+msgid "Show Promotion Code"
+msgstr ""
+
+#: src/HsformsOptions.php:456
+msgid "Show Add Room Link"
+msgstr ""
+
+#: src/HsformsOptions.php:463
+msgid "Show Ratecodes"
+msgstr ""
+
+#: src/HsformsOptions.php:470
+msgid "Show Segments"
+msgstr ""
+
+#: src/HsformsOptions.php:477
+msgid "Show Legends"
+msgstr ""
+
+#: src/HsformsOptions.php:483 src/block/block.js:415
+msgid "Monday"
+msgstr ""
+
+#: src/HsformsOptions.php:483 src/block/block.js:415
+msgid "Tuesday"
+msgstr ""
+
+#: src/HsformsOptions.php:483 src/block/block.js:415
+msgid "Wednesday"
+msgstr ""
+
+#: src/HsformsOptions.php:483 src/block/block.js:415
+msgid "Thursday"
+msgstr ""
+
+#: src/HsformsOptions.php:483 src/block/block.js:415
+msgid "Friday"
+msgstr ""
+
+#: src/HsformsOptions.php:483 src/block/block.js:415
+msgid "Saturday"
+msgstr ""
+
+#: src/HsformsOptions.php:483 src/block/block.js:415
+msgid "Sunday"
+msgstr ""
+
+#: src/init.php:409 src/Shortcode.php:106
+msgid "Minrange message"
+msgstr ""
+
+#: src/init.php:410 src/Shortcode.php:107
+msgid "Maxrange message"
+msgstr ""
+
+#: src/init.php:411 src/Shortcode.php:108
+msgid "Daterange message"
+msgstr ""
+
+#: src/init.php:412 src/Shortcode.php:109
+msgid "Arrival day is not allowed"
+msgstr ""
+
+#: src/init.php:413 src/Shortcode.php:110
+msgid "sorry too many persons"
+msgstr ""
+
+#: src/init.php:414 src/Shortcode.php:111
+msgid "DD.MM.YYYY"
+msgstr ""
+
+#: src/init.php:415 src/Shortcode.php:112
+msgid "de"
+msgstr ""
+
+#: src/init.php:416 src/Shortcode.php:113 src/block/block.js:716
+msgid "From:"
+msgstr ""
+
+#: src/init.php:417 src/Shortcode.php:114 src/block/block.js:720
+msgid "To:"
+msgstr ""
+
+#: src/init.php:418 src/Shortcode.php:115 src/block/block.js:728
+msgid "Adults:"
+msgstr ""
+
+#: src/init.php:419 src/Shortcode.php:116
+msgid "Children:"
+msgstr ""
+
+#: src/init.php:420 src/Shortcode.php:117
+msgid "Jahr"
+msgstr ""
+
+#: src/init.php:421 src/Shortcode.php:118
+msgid "Jahre"
+msgstr ""
+
+#: src/init.php:422 src/Shortcode.php:119
+msgid "Unter"
+msgstr ""
+
+#: src/init.php:423 src/Shortcode.php:120
+msgid "Segment"
+msgstr ""
+
+#: src/init.php:424 src/Shortcode.php:121
+msgid "Select Segment"
+msgstr ""
+
+#: src/init.php:425 src/Shortcode.php:122
+msgid "Promotion Code"
+msgstr ""
+
+#: src/init.php:426 src/RateCode/RateCode.php:114 src/Shortcode.php:123
+msgid "Rate Code"
+msgstr ""
+
+#: src/init.php:427 src/Shortcode.php:124
+msgid "Remove"
+msgstr ""
+
+#: src/init.php:428 src/Shortcode.php:125
+msgid "Add Room"
+msgstr ""
+
+#: src/init.php:429 src/Shortcode.php:126
+msgid "Age of Child:"
+msgstr ""
+
+#: src/RateCode/RateCode.php:113 src/Segment/Segment.php:113
+#: src/TravelPeriod/TravelPeriod.php:114
+msgid "Date created"
+msgstr ""
+
+#: src/RateCode/rc.php:4
+msgid "RateCode"
+msgstr ""
+
+#: src/Segment/Segment.php:114 src/Segment/sg.php:4
+msgid "Segment Code"
+msgstr ""
+
+#: src/TravelPeriod/tp.php:4 src/TravelPeriod/TravelPeriod.php:115
+msgid "Start"
+msgstr ""
+
+#: src/TravelPeriod/tp.php:10 src/TravelPeriod/TravelPeriod.php:116
+msgid "End"
+msgstr ""
+
+#: src/block/block.js:66
+msgid "hsforms"
+msgstr ""
+
+#: src/block/block.js:67
+msgid "hotelsuite"
+msgstr ""
+
+#: src/block/block.js:68
+msgid "onm"
+msgstr ""
+
+#: src/block/block.js:371
+msgid "Start Date"
+msgstr ""
+
+#: src/block/block.js:391
+msgid "End Date"
+msgstr ""
+
+#: src/block/block.js:438
+msgid "Convert to form"
+msgstr ""
+
+#: src/block/block.js:438
+msgid "Convert to button"
+msgstr ""
+
+#: src/block/block.js:448
+msgid "Display"
+msgstr ""
+
+#: src/block/block.js:453
+msgid "Block ID"
+msgstr ""
+
+#: src/block/block.js:459
+msgid "Button Label"
+msgstr ""
+
+#: src/block/block.js:465
+msgid "Modal Title"
+msgstr ""
+
+#: src/block/block.js:472 src/block/block.js:480
+msgid "IBE URL"
+msgstr ""
+
+#: src/block/block.js:488
+msgid "Override default IBE URL"
+msgstr ""
+
+#: src/block/block.js:489
+msgid "Default IBE URL can be changed in Hsforms plugin settings."
+msgstr ""
+
+#: src/block/block.js:494
+msgid "Toastr class"
+msgstr ""
+
+#: src/block/block.js:500
+msgid "Travel Period"
+msgstr ""
+
+#: src/block/block.js:506
+msgid "Extended TravelPeriods?"
+msgstr ""
+
+#: src/block/block.js:507
+msgid "You can select multiple TravelPeriods"
+msgstr ""
+
+#: src/block/block.js:515
+msgid "Select TravelPeriods"
+msgstr ""
+
+#: src/block/block.js:533
+msgid "minLOS Buffer"
+msgstr ""
+
+#: src/block/block.js:534
+msgid "minLOS Buffer will not be added in travelperiod"
+msgstr ""
+
+#: src/block/block.js:534
+msgid "minLOS Buffer will be added in travelperiod"
+msgstr ""
+
+#: src/block/block.js:541
+msgid "Days Allowed"
+msgstr ""
+
+#: src/block/block.js:547
+msgid "Min-Max Restrictions"
+msgstr ""
+
+#: src/block/block.js:551
+msgid "Minimum Nights"
+msgstr ""
+
+#: src/block/block.js:557
+msgid "Minimum Adults"
+msgstr ""
+
+#: src/block/block.js:563
+msgid "Maximum Adults"
+msgstr ""
+
+#: src/block/block.js:569
+msgid "Minimum Kinder"
+msgstr ""
+
+#: src/block/block.js:575
+msgid "Maximum Kinder"
+msgstr ""
+
+#: src/block/block.js:581
+msgid "Minimum Rooms"
+msgstr ""
+
+#: src/block/block.js:587
+msgid "Maximum Rooms"
+msgstr ""
+
+#: src/block/block.js:593
+msgid "Show Add Room Link?"
+msgstr ""
+
+#: src/block/block.js:594
+msgid "Add Room link will be shown"
+msgstr ""
+
+#: src/block/block.js:594
+msgid "Add Room link will be hidden"
+msgstr ""
+
+#: src/block/block.js:600
+msgid "Query Parameters"
+msgstr ""
+
+#: src/block/block.js:605
+msgid "Keep Parameters?"
+msgstr ""
+
+#: src/block/block.js:606
+msgid "Query Parameters will be sent to IBE"
+msgstr ""
+
+#: src/block/block.js:613
+msgid "Allowed Parameters"
+msgstr ""
+
+#: src/block/block.js:620
+msgid "Optional Fields"
+msgstr ""
+
+#: src/block/block.js:624
+msgid "Show Promotion Code to User?"
+msgstr ""
+
+#: src/block/block.js:625
+msgid "Promotion Code will be shown to the user as input field"
+msgstr ""
+
+#: src/block/block.js:630
+msgid "Web Promotion Code for Block Reservations"
+msgstr ""
+
+#: src/block/block.js:635
+msgid "Select RateCodes"
+msgstr ""
+
+#: src/block/block.js:651
+msgid "Show Ratecodes?"
+msgstr ""
+
+#: src/block/block.js:652
+msgid "Ratecodes will be sent to the IBE"
+msgstr ""
+
+#: src/block/block.js:658
+msgid "Select Segments"
+msgstr ""
+
+#: src/block/block.js:674
+msgid "Show Segments?"
+msgstr ""
+
+#: src/block/block.js:675
+msgid "Segments will be shown to the user"
+msgstr ""
+
+#: src/block/block.js:682
+msgid "API settings"
+msgstr ""
+
+#: src/block/block.js:687
+msgid "Show Legends?"
+msgstr ""
+
+#: src/block/block.js:688
+msgid "Legends will be shown to the user"
+msgstr ""
+
+#: src/block/block.js:688
+msgid "Legends will not be shown to the user."
+msgstr ""
+
+#: src/block/block.js:734
+msgid "Kinder:"
+msgstr ""
+
+#: src/block/block.js:754
+msgid "Preview"
+msgstr ""

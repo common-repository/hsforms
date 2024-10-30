@@ -1,0 +1,267 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+.tx-hsform {
+	max-width: 100rem!important;
+}
+.hsforms {
+	padding: 2rem 0;
+	.hidden-rooms {
+		display: none;
+	}
+	.hs-field {
+		display: inline;
+		width: 100%;
+	}
+	.add-room.btn,.remove-room.btn {
+		cursor: pointer;
+	}
+	max-width: 100rem!important;
+	.rooms {
+		display: flex;
+		flex-direction: row;
+		@media (max-width: $mediumWidth) {
+			flex-direction: column;
+		}
+	}
+	.room-rows {
+		flex-grow: 1;
+	}
+
+	.room-row {
+		position: relative;
+		display: flex;
+		flex-direction: row;
+		@media (max-width: $mediumWidth) {
+			flex-direction: column;
+			input[type=submit] {
+				width: calc(50% - 5px);
+			}
+		}
+		.box {
+			display: flex;
+			flex-direction: row;
+			@media (max-width: $calShiftWidth) {
+				flex-direction: column;
+			}
+		}
+
+		.dates {
+			width: 70%;
+			flex-basis: 70%;
+			@media (max-width: $mediumWidth) {
+				width: 100%;
+				flex-basis: 100%;
+			}
+		}
+
+		.persons {
+			width: 30%;
+			flex-basis: 30%;
+			@media (max-width: $mediumWidth) {
+				flex-direction: column;
+				width: 100%;
+				flex-basis: 100%;
+			}
+		}
+
+		.childrens-age-box {
+			position: absolute;
+			right: 10px;
+			background-color: white;
+			top: 100px;
+			z-index: 1000;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			overflow-y: auto;
+			box-shadow: 0 0 10px 0 rgba(0,0,0,0.3);
+			border-radius: 3px;
+			max-width: 574px;
+			
+			@media (max-width: $calShiftWidth) {
+				position: static;
+				overflow-y: initial;
+			}
+			@media (max-width: $mediumWidth) {
+				flex-direction: column;
+				position: static;
+				box-shadow: none;
+			}
+			.child-age-select {
+				
+				padding: 1rem;
+				min-width: 160px;
+
+				@media (max-width: $mediumWidth) {
+					width: 100%;
+					flex-basis: 100%;
+				}
+			}
+
+		}
+		
+		input[type=submit] {
+			padding-top: 0.9em;
+			padding-bottom: 0.9em;
+		}
+		@media (max-width: $calShiftWidth) {
+			input[type=submit] {
+				width: 100%;
+			}
+		}
+	}
+	&__item {
+		margin-right: 10px;
+		flex-grow: 1;
+		display: flex;
+		flex-direction: column;
+
+		
+		input {
+			padding: 1rem 1.5rem;
+			border: 1px solid $inputBorderColor;
+			border-radius: 3px;
+		}
+
+		&.submit {
+			margin-right: 0px;
+			flex-grow: 0;
+			
+			input[type=submit] {
+				background-color: $buttonColor;
+				border: none;
+				outline: none;
+				border-radius: 3px;
+				color: $white;
+				height: 100%;
+				
+				&:hover, &:focus {
+					border: none;
+					outline: none;
+				}
+			}
+			
+		}
+		@media (min-width: $mediumWidth+1) {
+			align-self: flex-end;
+		}
+		@media (max-width: $mediumWidth) {
+			width: 100%;
+			flex-basis: 100%;
+			&.submit {
+				margin-top: 10px;
+			}
+			&:last-child {
+				margin-right: 0px;
+			}
+		}
+		@media (max-width: $calShiftWidth) {
+			margin-right: 0px;
+		}
+	}
+
+	&--vertical {
+		.rooms { 
+			flex-direction: column;
+
+			.room-row {
+				flex-direction: column;
+
+				.hsforms {
+					&__item {
+						margin-top: 1rem;
+
+						&:last-child {
+							margin-right: 0;
+						}
+					}
+				}
+
+				.dates {
+					width: 100%;
+					flex-basis: 100%;
+				}
+
+				.persons {
+					width: 100%;
+					flex-basis: 100%;
+					flex-direction: column;
+
+					.hsforms__item {
+						width: 100%;
+						margin-right: 0;
+					}
+
+					.childrens-age-box {
+						box-shadow: none;
+						position: static;
+
+						.child-age-select {
+							width: 100%;
+							flex-basis: 100%;
+						}
+					}
+				}
+			}
+			.hsforms {
+				&__item {
+					&.submit { 
+						margin-top: 1.5rem;
+					}
+				}
+			}
+		}
+	}
+}
+
+.onm-d-none {
+  display: none;
+	visibility: hidden;
+}
+
+.onm-d-block {
+  display: block;
+	visibility: visible;
+}
+
+@media (min-width: 544px) {
+  .onm-d-sm-none {
+    display: none;
+    visibility: hidden; }
+  .onm-d-sm-block {
+    display: block;
+    visibility: visible; } }
+
+@media (min-width: 768px) {
+  .onm-d-md-none {
+    display: none;
+    visibility: hidden; }
+  .onm-d-md-block {
+    display: block;
+    visibility: visible; } }
+
+@media (min-width: 992px) {
+  .onm-d-lg-none {
+    display: none;
+    visibility: hidden; }
+  .onm-d-lg-block {
+    display: block;
+    visibility: visible; } }
+
+@media (min-width: 1200px) {
+  .onm-d-xl-none {
+    display: none;
+    visibility: hidden; }
+  .onm-d-xl-block {
+    display: block;
+    visibility: visible; } }
+
+.micromodal__overlay {
+	z-index: 10;
+	.micromodal__close {
+		color: black;
+	}
+}

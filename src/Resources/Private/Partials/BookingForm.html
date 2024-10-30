@@ -1,0 +1,234 @@
+<f:section name="Main">
+<div class="hsforms{f:if(condition:modifierClass, then: modifierClass, else: '')}" id="tx-hsforms-form-{blockId}">
+	<form class="booking-form" method="get" target='_blank'>
+	</form>
+	<script>
+		jQuery(document).ready(function($) {
+			// <f:comment>do not remove this please (trust me)</f:comment>
+			toastr.options.positionClass = '{toastrClass}';//'{settings.view.toastrPositionClass}';
+			moment.locale('{translations.locale}');
+			var selector = '#tx-hsforms-form-{blockId}';
+			$(selector).hsForms({
+				displayMessages: {
+					// <f:comment>do not remove this please (trust me)</f:comment>
+					'restriction.minRange': '{translations.minRange}',
+					'restriction.maxRange': '{translations.maxRange}',
+					//'adaptation.switch': 'An- /Abreise wurde vertauscht',
+					'adaptation.dateRange': '{translations.dateRange}',
+					'restriction.arrivalDay': '{translations.arrivalDay}',
+					'maxpersonsmsg': '{translations.maxpersonsmsg}',
+				},
+				restrictions: {"minpersons":<f:comment>also this ...</f:comment>{minPersons},"maxpersons":{maxPersons},"minadults":{minAdults},"maxadults":{maxAdults},"minchildren":{minKinder},"maxchildren":{maxKinder},"minnights":{minNights},"maxnights":99,"minrooms":{minRooms},"maxrooms":{maxRooms}},
+				daysAllowedArrival: [<f:for each="{daysAllowed}" as="day" iteration="Iterator">{day}<f:if condition="!{Iterator.isLast}">,</f:if></f:for>],
+				dateFormat: "{translations.dateFormat}",
+				lang: '{translations.locale}',
+				uid: '{blockId}',
+				enableAPI: {f:if(condition:enableAPI, then: 1, else: 0)},
+				keepParams: <f:if condition="{keepParams}"><f:then>{keepParams}</f:then><f:else>false</f:else></f:if>,
+				allowedParams: [<f:if condition="{allowedParams}"><f:then><f:for each="{allowedParams}" as="param" iteration="iterator"><f:if condition="{iterator.isLast}"><f:then>'{param}'</f:then><f:else>'{param}', </f:else></f:if></f:for></f:then><f:else>'all'</f:else></f:if>],
+				travelperiods: [
+							<f:for each="{tps}" as="tp">
+                                ["{tp.0}","{tp.1}"],
+                            </f:for>
+						]
+			});
+		});
+	</script>
+	<form action="{ibeFinalUrl}" target="_blank" class="bookingFormUI">
+		<div class="hidden-fields">
+			<f:for each="{urlParams}" as="val" key="key">
+				<f:if condition="{key}">
+					<input type="hidden" name="{key}" value="{val}" />
+				</f:if>
+			</f:for>
+		</div>
+		<div class="rooms">
+			<div class="room-rows">
+				<f:for each="{minRoomsIterator}" as="room" iteration="i">
+					<f:render section="roomRow" arguments="{_all}" />
+				</f:for>
+			</div>
+			<div class="hsforms__item submit">
+				<input type="submit" value="{btnLabel}" />
+			</div>
+		</div>
+		<f:if condition="{addRoomFlag}">
+			<div class="add-rooms hsforms_item">
+				<span class="add-room btn btn-link">{translations.addLinkLabel}</span>
+			</div>
+		</f:if>
+		<!-- Promocode block -->
+		<f:if condition="{promocode}">
+			<f:if condition="{promocodeFlag}">
+				<f:then>
+					<label for="promocode-{blockId}">{translations.promocodeLabel}</label>
+					<input type="text" name="promotioncode" class="promotion-code" id="promocode-{blockId}" value="{promocode}">
+				</f:then>
+				<f:else>
+					<input type="hidden" name="promotioncode" class="promotion-code" id="promocode-{blockId}" value="{promocode}">
+				</f:else>
+			</f:if>
+		</f:if>
+		<!-- Ratecode block -->
+		<f:if condition="{ratecodeFlag}">
+			<f:then>
+				<f:if condition="{ratecodes}">
+					<f:for each="{ratecodes}" as="ratecode" iteration="i">
+						<label for="ratecode-{blockId}-{i.cycle}">{translations.ratecodeLabel} {i.cycle}</label>
+						<input class="ratecode" type="text" name="ratecode{i.cycle}" id="ratecode-{blockId}-{i.cycle}" value="{ratecode.0}">
+					</f:for>
+				</f:if>
+			</f:then>
+			<f:else>
+				<f:for each="{ratecodes}" as="ratecode" iteration="i">
+					<input class="ratecode" type="hidden" name="ratecode{i.cycle}" id="ratecode-{blockId}-{i.cycle}" value="{ratecode.0}">
+				</f:for>
+			</f:else>
+		</f:if>
+
+		<!-- Colors and their labels -->
+		<f:if condition="{colorConfig} && {legendFlag}">
+            <f:render section="lenegds" arguments="{_all}" />
+        </f:if>
+	</form>
+
+	<!-- remaining rooms which can be booked but hidden, will be shown on click of a link/button -->
+	<div class="hidden-rooms">
+		<!-- rendering room row section -->
+		<f:for each="{hiddenRoomsIterator}" as="room" iteration="i">
+			<div class="room-section">
+				<f:render section="roomRow" arguments="{_all}" />
+				<!-- Remove room button only for hidden rows -->
+				<span class="remove-room btn btn-link">{translations.removeLinkLabel}</span>
+			</div>
+		</f:for>
+	</div>
+</div>
+</f:section>
+
+<!-- =========================== Room Section =========================== -->
+<f:section name="roomRow">
+	<div class="room-row">
+		<div class="dates box">
+			<!-- date from -->
+			<div class="hsforms__item">
+				<label for="date1">{translations.dateFromLabel}</label>
+				<input type="text" name="date1" id="input_de{room}-{blockId}" class="date1 hsdate hs-field">
+			</div>
+			<!-- date to -->
+			<div class="hsforms__item">
+				<label for="date2">{translations.dateToLabel}</label>
+				<input type="text" name="date2" class="date2 hsdate hs-field" id="input_de_to{room}-{blockId}">
+			</div>
+		</div>
+		<div class="booker-in-content"></div>
+		<div class="persons box">
+			<f:if condition="{maxAdults} > 0">
+				<!-- adults -->
+				<div class="hsforms__item">
+					<label for="adults">{translations.adultsLabel}</label>
+					<input type="number" name="adults{room}" value="{minAdults}" data-minPersons="{minPersons}" data-maxPersons="{maxPersons}" min="{minAdults}" max="{maxAdults}" class="hs-field adults">
+				</div>
+			</f:if>
+
+
+			<f:if condition="{maxAdults} > 0">
+				<!-- children -->
+				<div class="hsforms__item">
+					<label for="children">{translations.kinderLabel}</label>
+					<input type="number" name="children" id="children{room}-{blockId}" data-minPersons="{minPersons}" data-maxPersons="{maxPersons}" data-children-box-id="children-box-{blockId}-{room}" value="{minKinder}" min="{minKinder}" max="{maxKinder}" class="children hs-field">
+					<!-- Children Ages -->
+					<div class="childrens-age-box" id="children-box-{blockId}-{room}">
+
+					</div>
+					<div style="display: none" class="js-child-age-template">
+						<div class="child-age-select">
+							<label for="">{translations.kinderAgeLabel}</label>
+							<select class="form-control child-age">
+								<option value="0">{translations.under} 1 {translations.year}</option>
+								<f:if condition="{maxKinderAge}">
+									<f:then>
+										<f:for each="{maxKinderAge}" as="age" iteration="i">
+											<option value="{i.cycle}">{i.cycle} 
+												<f:if condition="{i.cycle} > 1">
+													<f:then>
+														{translations.years}
+													</f:then>
+													<f:else>
+														{translations.year}
+													</f:else>
+												</f:if>
+											</option>
+										</f:for>
+									</f:then>
+									<f:else>
+										<option value="1">1 {translations.year}</option>
+										<option value="2">2 {translations.years}</option>
+										<option value="3">3 {translations.years}</option>
+										<option value="4">4 {translations.years}</option>
+										<option value="5">5 {translations.years}</option>
+										<option value="6">6 {translations.years}</option>
+										<option value="7">7 {translations.years}</option>
+										<option value="8">8 {translations.years}</option>
+										<option value="9">9 {translations.years}</option>
+										<option value="10">10 {translations.years}</option>
+										<option value="11">11 {translations.years}</option>
+										<option value="12">12 {translations.years}</option>
+									</f:else>
+								</f:if>
+							</select>
+						</div>
+					</div>
+				</div>
+			</f:if>
+		</div>
+		<!-- Segment block -->
+		<f:if condition="{segmentFlag}">
+			<f:if condition="{segments}">
+				<div class="hsforms__item">
+					<label for="">{translations.segmentLabel}</label>
+					<select class="segments" name="segment{room}" id="segment{room}-{blockId}">
+						<option value="">{translations.segmentDefaultLabel}</option>
+						<f:for each="{segments}" as="segment" iteration="i">
+							<option value="{segment.1}">{segment.0}</option>
+						</f:for>
+					</select>
+				</div>
+			</f:if>
+		</f:if>
+		<div class="clear"></div>
+	</div>
+</f:section>
+
+<!-- =========================== Legends Section =========================== -->
+<f:section name="lenegds">
+    <div class="hsforms_legend">
+            
+        <div class="holder">
+            <f:if condition="{colorConfig.name1}">
+                <div>
+                    <span class="color-box" style="background: {colorConfig.color1}; width: 20px; height: 20px; display: inline-block"></span>
+                    <span>{colorConfig.name1}</span>
+                </div>
+            </f:if>
+            <f:if condition="{colorConfig.name2}">
+                <div>
+                    <span class="color-box" style="background: {colorConfig.color2}; width: 20px; height: 20px; display: inline-block"></span>
+                    <span>{colorConfig.name2}</span>
+                </div>
+            </f:if>
+            <f:if condition="{colorConfig.name3}">
+                <div>
+                    <span class="color-box" style="background: {colorConfig.color3}; width: 20px; height: 20px; display: inline-block"></span>
+                    <span>{colorConfig.name3}</span>
+                </div>
+            </f:if>
+            <f:if condition="{colorConfig.name4}">
+                <div>
+                    <span class="color-box" style="background: {colorConfig.color4}; width: 20px; height: 20px; display: inline-block"></span>
+                    <span>{colorConfig.name4}</span>
+                </div>
+            </f:if>
+        </div>
+    </div>
+</f:section>

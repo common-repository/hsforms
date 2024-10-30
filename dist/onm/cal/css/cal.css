@@ -1,0 +1,289 @@
+/**
+ * Copyright (c) 2019 Open New Media GmbH
+ * onm_cal - Javascript Calendar
+ * @version v1.1.1
+ * @author Open New Media GmbH
+ */
+.onm-cal,
+.onm-cal *,
+.onm-cal *:before,
+.onm-cal *:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.onm-cal-popup {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  z-index: 200000;
+}
+.onm-cal {
+  width: 100%;
+  min-height: 20px;
+  padding: 0;
+  border: 1px solid #e3e3e3;
+  border-radius: 1px;
+  background-color: #FFF;
+  min-width: 200px;
+  max-width: 600px;
+}
+.onm-cal .onm-cal-nav {
+  position: relative;
+  margin: 2px 0 0 0;
+  height: 48px;
+}
+.onm-cal .onm-cal-nav button {
+  position: absolute;
+  top: 0;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 6px auto;
+}
+.onm-cal .onm-cal-nav button.onm-cal-prev {
+  left: 18px;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAVCAYAAAByrA+0AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJJJREFUeNpiNDAwYCACGAOxCxB3shCpeDcQCwKxEhMJisF8JhIUnwViVyZSFAPxeyZSFIM4TKQoRtdAUDGyBqIUwzQQrRimoRxJMQiE4VIM05AONRUGVqEZgKHhPdQJZ3H4hwGbp4nWhBysRGlCjziCmrAlDbyacCU+nJrwJW+smghlIHRNe4jJojBNoUA8CyDAAJVwNa0q7JatAAAAAElFTkSuQmCC');
+}
+.onm-cal .onm-cal-nav button.onm-cal-next {
+  right: 18px;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAVCAYAAAByrA+0AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAKRJREFUeNqUk4EJhDAMRb2PC9wmBWe4FW6EuxG8VVxBR9AVXMEVXOF+oIUgbRIDDxv4r00LPlJKHWskG9k7p3oykQ85ycuTQIa8fpJV9U1B7+pKqIxiSsjfsAS1Dkm4bOBKqIxpSmg8RlOC8eQivVUv0mgJEphVL6d9YYT1Zfc84ok74dqlzfBVcMNaCIWLEA4XIRwuwhYNl1/0Rw6yeGGpvwADALNxOVnupuAOAAAAAElFTkSuQmCC');
+}
+.onm-cal .onm-cal-nav button:disabled {
+  opacity: 0.33;
+  cursor: default;
+}
+.onm-cal .onm-cal-nav h6 {
+  margin: 0 66px;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 48px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.onm-cal .onm-cal-nav h6 .onm-cal-month {
+  padding: 0 4px;
+  color: #303030;
+}
+.onm-cal .onm-cal-nav h6 .onm-cal-year {
+  padding: 0 4px;
+  color: #c9c9c9;
+}
+.onm-cal .onm-cal-headline {
+  height: 20px;
+  font-size: 14px;
+  line-height: 18px;
+  font-style: normal;
+  font-weight: 300;
+  color: #303030;
+  margin: 0 18px 0 18px;
+}
+.onm-cal .onm-cal-headline > div {
+  float: left;
+  width: 14.035%;
+  width: calc(100% / 7 - 1px);
+  margin-left: 0.292%;
+  margin-left: calc(1px);
+  padding: 0 0 0 4px;
+}
+.onm-cal .onm-cal-headline > div.onm-cal-line-start {
+  margin-left: 0;
+}
+.onm-cal .onm-cal-headline > div.onm-cal-day0 {
+  color: #AE442F;
+}
+.onm-cal .onm-cal-content {
+  clear: both;
+  height: auto;
+  margin: 0 18px;
+  font-size: 14px;
+  line-height: 18px;
+  font-style: normal;
+  font-weight: 500;
+  color: #969696;
+}
+.onm-cal .onm-cal-content > div {
+  position: relative;
+  float: left;
+  width: 14.035%;
+  width: calc(100% / 7 - 1px);
+  margin-left: 0.292%;
+  margin-left: calc(1px);
+  margin-top: 0.292%;
+  margin-top: calc(1px);
+  padding-top: 14.035%;
+  padding-top: calc(100% / 7 - 1px);
+  height: 0;
+}
+.onm-cal .onm-cal-content > div.onm-cal-line-start {
+  margin-left: 0;
+}
+.onm-cal .onm-cal-content > div > div {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 24px;
+  padding: 0 8px 0 0;
+  text-align: right;
+}
+.onm-cal .onm-cal-content .onm-cal-day-active {
+  color: #303030;
+  background-color: #e7e7e7;
+  cursor: pointer;
+}
+.onm-cal .onm-cal-content .onm-cal-day-selected {
+  color: #FFF;
+  background-color: #818181;
+}
+.onm-cal .onm-cal-content .onm-cal-day-selected-line:before {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 100%;
+  top: 10px;
+  height: 2px;
+  background-color: #FFF;
+}
+.onm-cal .onm-cal-content .onm-cal-day-selected-start:before {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: auto;
+  left: 10px;
+  right: 0;
+  top: 10px;
+  height: 2px;
+  background-color: #FFF;
+}
+.onm-cal .onm-cal-content .onm-cal-day-selected-start:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 6px;
+  left: 5px;
+  border: 5px solid #FFF;
+  border-radius: 5px;
+}
+.onm-cal .onm-cal-content .onm-cal-day-selected-start.onm-cal-day-selected-end:before,
+.onm-cal .onm-cal-content .onm-cal-day-selected-start.onm-cal-day-selected-end:after {
+  display: none;
+}
+.onm-cal .onm-cal-content .onm-cal-day-selected-end:before {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: auto;
+  left: 0;
+  right: 10px;
+  top: 10px;
+  height: 2px;
+  background-color: #FFF;
+}
+.onm-cal .onm-cal-content .onm-cal-day-selected-end:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 6px;
+  right: 5px;
+  border: 5px solid #FFF;
+  border-radius: 5px;
+}
+.onm-cal .onm-cal-content:after {
+  content: " ";
+  display: block;
+  clear: both;
+  height: 18px;
+}
+.onm-cal.onm-cal-small .onm-cal-content > div > div {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  right: 0;
+  margin-top: -11px;
+  height: 24px;
+  line-height: 24px;
+  padding: 0;
+  text-align: center;
+}
+.onm-cal.onm-cal-small .onm-cal-content > div.onm-cal-day-selected-line:before {
+  top: 3px;
+}
+.onm-cal.onm-cal-small .onm-cal-content > div.onm-cal-day-selected-start:before {
+  top: 3px;
+}
+.onm-cal.onm-cal-small .onm-cal-content > div.onm-cal-day-selected-start:after {
+  top: 1px;
+  border: 3px solid #FFF;
+  border-radius: 3px;
+}
+.onm-cal.onm-cal-small .onm-cal-content > div.onm-cal-day-selected-end:before {
+  top: 3px;
+}
+.onm-cal.onm-cal-small .onm-cal-content > div.onm-cal-day-selected-end:after {
+  top: 1px;
+  border: 3px solid #FFF;
+  border-radius: 3px;
+}
+.onm-cal.onm-cal-no-nav button {
+  display: none;
+}
+.onm-cal.onm-cal-no-nav h6 {
+  margin: 0 18px;
+  text-align: left;
+}
+.onm-cal-xcol .onm-cal {
+  float: left;
+}
+.onm-cal-xcol:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+.onm-cal-2col .onm-cal {
+  float: left;
+}
+.onm-cal-2col:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+.onm-cal-2col .onm-cal {
+  width: 50%;
+}
+.onm-cal-3col .onm-cal {
+  float: left;
+}
+.onm-cal-3col:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+.onm-cal-3col .onm-cal {
+  width: 33.33%;
+}
+.onm-cal-4col .onm-cal {
+  float: left;
+}
+.onm-cal-4col:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+.onm-cal-4col .onm-cal {
+  width: 25%;
+}

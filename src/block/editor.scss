@@ -1,0 +1,89 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+
+.tp-multi-select {
+	.select__input {
+		input:focus {
+			box-shadow: none;
+		}
+	}
+	flex-grow: 1;
+}
+
+.hsforms {
+	.preview {
+		position: absolute;
+		max-width: 100px;
+		top: -12px;
+		right: 23px;
+		opacity: 0.5;
+		color: $buttonColor;
+		font-family: "Inter var", "Helvetica Neue", Helvetica, sans-serif;
+		font-weight: 600;
+	}
+	.hsforms-backend {
+		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+		form {
+			display: flex;
+		}
+		input[type=text],input[type=number] {
+			padding: 0.97rem 1rem!important;
+			width: 100%;
+			border-radius: 0;
+			border-color: #dcd7ca;
+			border-style: solid;
+			border-width: 0.1rem;
+			font-size: 1rem;
+			font-family: "Inter var", "Helvetica Neue", Helvetica, sans-serif;
+		}
+		input[type=submit] {
+			padding: 1rem 1.5rem!important;
+			height: 100%;
+			background-color: $buttonColor;
+			color: white;
+			font-size: 0.8em;
+			font-weight: 600;
+			letter-spacing: 0.0333em;
+			line-height: 1.25;
+			border: none;
+			border-radius: 0;
+			cursor: pointer;
+			display: inline-block;
+			text-transform: uppercase;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+		.clear {
+			clear: both;
+		}
+		.rooms {
+			flex-grow: 1;
+			.room-rows {
+				display: flex;
+				flex-direction: column;
+			}
+		}
+		.room-row {
+			.box {
+				flex-grow: 1;
+			}
+		}
+		.hsforms__item {
+			align-self: auto;
+
+			br {
+				display: none;
+			}
+
+			&.submit {
+				padding: 1.5rem 0 0 0;
+				margin-bottom: 0;
+			}
+		}
+	}
+}
